@@ -12,6 +12,21 @@ El proyecto implementa un modelo matemático dinámico basado en una elipse de s
 * **`test_collisions.py`**: ejecuta las operaciones matriciales para comprobar si los centros de las elipses de los buques intersecan entre sí y exporta los resultados.
 * **`map.py`**: interfaz gráfica desarrollada con Tkinter para representar cartográficamente los encuentros detectados en el mapa.
 
+## Arquitectura del Software
+
+Para una mejor comprensión gráfica, el siguiente diagrama muestra el flujo de ejecución e interacción entre los distintos módulos del programa:
+
+```mermaid
+graph TD
+    classDef config fill:#f9f9f9,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+    
+    SQL[sql_request.py] --> TC[test_collisions.py]
+    TC --> ES[ellipse_size.py]
+    TC --> MAIN[main.py / tfg]
+    JSON[config.json<br>- tamaño de elipse<br>- rango fechas] -.-> MAIN
+    class JSON config;
+```
+
 ## Flujo de trabajo
 1. **Configuración**: Modificar los parámetros deseados (fechas, velocidad, rango temporal) en el archivo `config.json`.
 2. **Cálculo de colisiones**: Ejecutar `main.py` para extraer los datos de la base de datos y procesar matemáticamente las elipses. 
