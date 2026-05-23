@@ -24,18 +24,28 @@ Para su comprensión gráfica se ha elaborado el siguiente diagrama:
 
 Para su comprensión gráfica se ha elaborado el siguiente diagrama:
 
-       [ sql_request ]             [ ellipse_size ]
-              │                           ▲
-              │                           │
-              ▼                           │
-      [ test_collisions ] ◄───────────────┘
-              │
-              ▼
- ┌ - - - - - - - - - - - ┐                
- │         json:         │                
- │  - tamaño de elipse   │ ──────► [ tfg ]
- │  - rango fechas       │                
- └ - - - - - - - - - - - ┘
+```mermaid
+flowchart TD
+    %% Definición de estilos
+    classDef caja fill:#a3a3a3,stroke:#888,stroke-width:1px,color:#fff,rx:8px,ry:8px;
+    classDef cajaDashed fill:#e5e5e5,stroke:#555,stroke-width:2px,stroke-dasharray: 5 5,color:#555,rx:8px,ry:8px;
+
+    %% Declaración de nodos
+    SQL[sql_request]:::caja
+    ES[ellipse_size]:::caja
+    TC[test_collisions]:::caja
+    TFG[tfg]:::caja
+    JSON["json:<br>- tamaño de elipse<br>- rango fechas"]:::cajaDashed
+
+    %% Conexiones invisibles para alinear
+    SQL ~~~ JSON
+    
+    %% Flujo de las flechas (con doble sentido entre TC y ES)
+    SQL --> TC
+    TC <--> ES
+    TC --> TFG
+    JSON --> TFG
+```
 
 ## Flujo de trabajo
 1. **Configuración**: Modificar los parámetros deseados (fechas, velocidad, rango temporal) en el archivo `config.json`.
