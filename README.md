@@ -20,28 +20,22 @@ Para una mejor comprensión gráfica, el siguiente diagrama muestra el flujo de 
 
 Para su comprensión gráfica se ha elaborado el siguiente diagrama:
 
-```mermaid
-flowchart TD
-    %% Definición de estilos imitando la imagen
-    classDef caja fill:#a3a3a3,stroke:#888,stroke-width:1px,color:#fff,rx:8px,ry:8px;
-    classDef cajaDashed fill:#e5e5e5,stroke:#555,stroke-width:2px,stroke-dasharray: 5 5,color:#555,rx:8px,ry:8px;
+## Arquitectura del Software
 
-    %% Declaración de nodos
-    SQL[sql_request]:::caja
-    ES[ellipse_size]:::caja
-    TC[test_collisions]:::caja
-    TFG[tfg]:::caja
-    JSON["json:<br>- tamaño de elipse<br>- rango fechas"]:::cajaDashed
+Para su comprensión gráfica se ha elaborado el siguiente diagrama:
 
-    %% Conexiones invisibles para forzar la estructura visual
-    SQL ~~~ JSON
-    
-    %% Flujo real de las flechas
-    SQL --> TC
-    TC --> ES
-    TC --> TFG
-    JSON --> TFG
-```
+       [ sql_request ]             [ ellipse_size ]
+              │                           ▲
+              │                           │
+              ▼                           │
+      [ test_collisions ] ◄───────────────┘
+              │
+              ▼
+ ┌ - - - - - - - - - - - ┐                
+ │         json:         │                
+ │  - tamaño de elipse   │ ──────► [ tfg ]
+ │  - rango fechas       │                
+ └ - - - - - - - - - - - ┘
 
 ## Flujo de trabajo
 1. **Configuración**: Modificar los parámetros deseados (fechas, velocidad, rango temporal) en el archivo `config.json`.
