@@ -16,15 +16,31 @@ El proyecto implementa un modelo matemático dinámico basado en una elipse de s
 
 Para una mejor comprensión gráfica, el siguiente diagrama muestra el flujo de ejecución e interacción entre los distintos módulos del programa:
 
+## Arquitectura del Software
+
+Para su comprensión gráfica se ha elaborado el siguiente diagrama:
+
 ```mermaid
-graph TD
-    classDef config fill:#f9f9f9,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5;
+flowchart TD
+    %% Definición de estilos imitando la imagen
+    classDef caja fill:#a3a3a3,stroke:#888,stroke-width:1px,color:#fff,rx:8px,ry:8px;
+    classDef cajaDashed fill:#e5e5e5,stroke:#555,stroke-width:2px,stroke-dasharray: 5 5,color:#555,rx:8px,ry:8px;
+
+    %% Declaración de nodos
+    SQL[sql_request]:::caja
+    ES[ellipse_size]:::caja
+    TC[test_collisions]:::caja
+    TFG[tfg]:::caja
+    JSON["json:<br>- tamaño de elipse<br>- rango fechas"]:::cajaDashed
+
+    %% Conexiones invisibles para forzar la estructura visual
+    SQL ~~~ JSON
     
-    SQL[sql_request.py] --> TC[test_collisions.py]
-    TC --> ES[ellipse_size.py]
-    TC --> MAIN[main.py / tfg]
-    JSON[config.json<br>- tamaño de elipse<br>- rango fechas] -.-> MAIN
-    class JSON config;
+    %% Flujo real de las flechas
+    SQL --> TC
+    TC --> ES
+    TC --> TFG
+    JSON --> TFG
 ```
 
 ## Flujo de trabajo
