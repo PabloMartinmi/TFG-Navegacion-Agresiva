@@ -18,7 +18,6 @@ Para su comprensión gráfica se ha elaborado el siguiente diagrama:
 
 ```mermaid
 flowchart TD
-    %% Definición de estilos
     classDef caja fill:#a3a3a3,stroke:#888,stroke-width:1px,color:#fff,rx:8px,ry:8px;
     classDef cajaDashed fill:#e5e5e5,stroke:#555,stroke-width:2px,stroke-dasharray: 5 5,color:#555,rx:8px,ry:8px;
 
@@ -27,15 +26,14 @@ flowchart TD
     ES[ellipse_size]:::caja
     TC[test_collisions]:::caja
     JSON["json:<br>- tamaño de elipse<br>- rango fechas"]:::cajaDashed
-    TFG[tfg]:::caja
+    MAIN[main]:::caja
 
     %% Flujo de las flechas
     SQL --> TC
     TC <--> ES
-    TC --> TFG
-    JSON --> TFG
+    TC --> MAIN
+    JSON --> MAIN
 
-    %% Conexión invisible para forzar a JSON a ir abajo a la izquierda (evita cruces)
     TC ~~~ JSON
 ```
 
