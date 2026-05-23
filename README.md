@@ -13,9 +13,26 @@ El proyecto implementa un modelo matemático dinámico basado en una elipse de s
 * **`map.py`**: interfaz gráfica desarrollada con Tkinter para representar cartográficamente los encuentros detectados en el mapa.
 
 ## Flujo de trabajo
-1. **Configuración**: modificar los parámetros deseados (fechas, velocidad, rango temporal) en el archivo `config.json`.
-2. **Cálculo de colisiones**: ejecutar `main.py` para extraer los datos de la base de datos y procesar matemáticamente las elipses. Esto generará un archivo de texto con los resultados.
-3. **Visualización**: ejecutar el script del mapa pasando por argumento el archivo de texto generado. Por ejemplo: `python map.py "2020-01-01_13-45-00_2020-01-01_14-15-00_15.txt"`.
+1. **Configuración**: Modificar los parámetros deseados (fechas, velocidad, rango temporal) en el archivo `config.json`.
+2. **Cálculo de colisiones**: Ejecutar `main.py` para extraer los datos de la base de datos y procesar matemáticamente las elipses. 
+   
+   Al ejecutarse el programa de forma continuada, los resultados se almacenarán de forma ordenada generando automáticamente la siguiente jerarquía de carpetas:
+
+```text
+   Datos de encuentros/         # Directorio raíz de resultados generados
+   ├── 1/                       # Carpetas según el parámetro de iteración (ej. velocidad mínima)
+   ├── 2/
+   ├── ...
+   └── 10/
+       ├── 2018-01/             # Subcarpetas agrupadas por Año-Mes de los datos
+       ├── 2018-02/
+       ├── ...
+       └── 2020-12/
+           ├── 2020-11-30_23-45-00_2020-12-01_00-15-00_15.txt  # Archivos con los encuentros detectados
+           ├── 2020-11-30_23-45-00_2020-12-01_00-45-00_15.txt  # (El nombre indica las ventanas de tiempo)
+           ├── 2020-11-30_23-45-00_2020-12-01_01-15-00_15.txt
+           └── 2020-11-30_23-45-00_2020-12-01_01-45-00_15.txt
+```
 
 ## Autores
 * **Pablo Manuel Martín Isabel**
