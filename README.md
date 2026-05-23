@@ -14,14 +14,6 @@ El proyecto implementa un modelo matemático dinámico basado en una elipse de s
 
 ## Arquitectura del Software
 
-Para una mejor comprensión gráfica, el siguiente diagrama muestra el flujo de ejecución e interacción entre los distintos módulos del programa:
-
-## Arquitectura del Software
-
-Para su comprensión gráfica se ha elaborado el siguiente diagrama:
-
-## Arquitectura del Software
-
 Para su comprensión gráfica se ha elaborado el siguiente diagrama:
 
 ```mermaid
@@ -34,17 +26,17 @@ flowchart TD
     SQL[sql_request]:::caja
     ES[ellipse_size]:::caja
     TC[test_collisions]:::caja
-    TFG[tfg]:::caja
     JSON["json:<br>- tamaño de elipse<br>- rango fechas"]:::cajaDashed
+    TFG[tfg]:::caja
 
-    %% Conexiones invisibles para alinear
-    SQL ~~~ JSON
-    
-    %% Flujo de las flechas (con doble sentido entre TC y ES)
+    %% Flujo de las flechas
     SQL --> TC
     TC <--> ES
     TC --> TFG
     JSON --> TFG
+
+    %% Conexión invisible para forzar a JSON a ir abajo a la izquierda (evita cruces)
+    TC ~~~ JSON
 ```
 
 ## Flujo de trabajo
