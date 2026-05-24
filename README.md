@@ -41,7 +41,7 @@ flowchart TD
 1. **Configuración**: Modificar los parámetros deseados (fechas, velocidad, rango temporal) en el archivo `config.json`.
 2. **Cálculo de colisiones**: Ejecutar `main.py` para extraer los datos de la base de datos y procesar matemáticamente las elipses. 
    
-   Al ejecutarse el programa de forma continuada, los resultados se almacenarán de forma ordenada generando automáticamente la siguiente jerarquía de carpetas:
+   Al ejecutarse el programa de forma continuada, los resultados se almacenarán de forma ordenada generando la siguiente jerarquía de carpetas:
 
 ```text
    Datos de encuentros/         # Directorio raíz de resultados generados
