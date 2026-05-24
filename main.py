@@ -1,11 +1,12 @@
 import datetime
 import json
 
-# Imported scripts
+# Scripts
 from sql_request import sql_request
 from test_collisions import check_collisions
 
-# Get config values
+
+# Config values
 with open('config.json', 'r') as f:
     config = json.load(f)
 
